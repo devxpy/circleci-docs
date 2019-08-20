@@ -116,7 +116,11 @@ In every step, CircleCI uses `bash` to source `BASH_ENV`. This means that `BASH_
 allowing you to use interpolation and share environment variables across `run` steps.
 
 **Note:**
-The `BASH_ENV` workaround only works with `bash`. Other implementations like `sh` will not work. This limitation affects your image options. For example, because [Alpine images](https://alpinelinux.org/) do not include `bash` by default, the `BASH_ENV` workaround will not work without first installing `bash`.
+The `$BASH_ENV` workaround only works with `bash`. 
+Other shells probably won't work.
+
+For example, an image that's based on [Alpine Linux](https://alpinelinux.org/) (like [docker](https://hub.docker.com/_/docker)), uses the `ash` shell. Therefore, you can use `/etc/profile` instead of `$BASH_ENV` here.
+
 
 ## Setting an Environment Variable in a Shell Command
 
